@@ -43,7 +43,7 @@ function extractAnnotations(results) {
                     endLine: file["line"],
                     priority: file["priority"],
                     status: file["status"],
-                    title: controlResults.control["title"],
+                    title: "bla",
                     details: getDetail(controlResults, file),
                 });
             }
