@@ -1,19 +1,18 @@
 FROM ghcr.io/orcasecurity/orca-cli:1.84.0
 
-RUN apk --no-cache --update add bash curl
+RUN apk --no-cache --update add bash curl nodejs npm
 
-# Set the Node.js version to install
-ENV NODE_VERSION=22.11.0
-ENV NODE_PACKAGE_URL=https://nodejs.org/dist/v$NODE_VERSION/node-v$NODE_VERSION-linux-x64.tar.xz
+# Install specific Node version using n
+RUN npm install -g n
+RUN n 22.11.0  # or your desired version
 
-# Download and install Node.js from the specified URL
-RUN curl -fsSL $NODE_PACKAGE_URL -o node.tar.xz && \
-    mkdir -p /usr/local/lib/nodejs && \
-    tar -xJf node.tar.xz -C /usr/local/lib/nodejs && \
-    rm node.tar.xz
+# Verify versions
+RUN node --version
+RUN npm --version
 
-# Install a specific version of npm
-RUN npm install -g npm@8.1.0
+# If you need a specific npm version
+RUN npm install -g npm@11.1.0  # or your desired npm version
+
 
 WORKDIR /app
 # Docker tries to cache each layer as much as possible, to increase building speed.
