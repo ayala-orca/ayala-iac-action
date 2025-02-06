@@ -1,5 +1,4 @@
 FROM ghcr.io/orcasecurity/orca-cli:1
-RUN apk add --no-cache sqlite sqlite-dev
 RUN apk --no-cache --update add bash nodejs npm
 
 WORKDIR /app
