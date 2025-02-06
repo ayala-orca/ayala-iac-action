@@ -12,7 +12,8 @@ RUN curl -fsSL $NODE_PACKAGE_URL -o node.tar.xz && \
     tar -xJf node.tar.xz -C /usr/local/lib/nodejs && \
     rm node.tar.xz
 
-RUN apk --no-cache --update add npm
+# Install a specific version of npm
+RUN npm install -g npm@8.1.0
 
 WORKDIR /app
 # Docker tries to cache each layer as much as possible, to increase building speed.
