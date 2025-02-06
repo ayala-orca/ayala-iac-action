@@ -12,6 +12,8 @@ RUN curl -fsSL $NODE_PACKAGE_URL -o node.tar.xz && \
     tar -xJf node.tar.xz -C /usr/local/lib/nodejs && \
     rm node.tar.xz
 
+RUN apk --no-cache --update add npm
+
 WORKDIR /app
 # Docker tries to cache each layer as much as possible, to increase building speed.
 # Therefore, commands which change rarely, must be in the beginning.
