@@ -1,6 +1,6 @@
-FROM ghcr.io/orcasecurity/orca-cli:1.84.0
-
-RUN apk --no-cache --update add bash curl
+FROM ghcr.io/orcasecurity/orca-cli:1
+RUN apk add --no-cache sqlite sqlite-dev
+RUN apk --no-cache --update add bash nodejs npm
 
 # Set the Node.js version to install
 ENV NODE_VERSION=20.18.2
